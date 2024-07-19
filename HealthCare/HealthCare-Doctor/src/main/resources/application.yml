@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: HealthCare-Doctor
+  config:
+    import: "optional:configserver:http://localhost:8088"
+

@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: HealthCare-ApiGatewayService 
+  config:
+    import: "configserver:${CONFIG_SERVER_URL:http://localhost:8088}"
+  cloud:   
+    gateway:
+      routes:
+        - id: HealthCare-Doctor
+          uri: lb://HealthCare-Doctor
+          predicates:
+            - Path=/doctor/**
+        - id: HealthCare-PatientService
+          uri: lb://HealthCare-PatientService
+          predicates:
+            - Path=/patient/**
+        - id: HealthCare-Registration
+          uri: lb://HealthCare-Registration
+          predicates:
+            - Path=/registration/**
+        - id: HealthCare-Staff
+          uri: lb://HealthCare-Staff
+          predicates:
+            - Path=/staff/**
+        - id: HealthCare-PaymentService
+          uri: lb://HealthCare-PaymentService
+          predicates:
+            - Path=/payment/**
+
